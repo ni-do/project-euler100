@@ -3,13 +3,13 @@ const isMultipleOf = (number, multiplicant) => {
     else return false
 }
 
-const multiplesOf3and5 = []
+const multiplesOf3or5 = []
 
 for (let number = 1; number < 1000; number++) {
-    if(isMultipleOf(number, 3) || isMultipleOf(number, 5)) multiplesOf3and5.push(number)
+    if(isMultipleOf(number, 3) || isMultipleOf(number, 5)) multiplesOf3or5.push(number)
 }
 
-const sum = multiplesOf3and5.reduce((acc, currentValue) => {
+const sum = multiplesOf3or5.reduce((acc, currentValue) => {
     return acc + currentValue
 }, 0)
 
