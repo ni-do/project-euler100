@@ -6,11 +6,10 @@ let factor1 = 999, factor2 = 999, result = factor1 * factor2
 
 const isPalindrome = (number) => {
   const numberArray = number.toString().split('')
-  // if(numberArray.length % 2 === 0) {
-    for (let i = 1; i <= numberArray.length; i++) {
-      if (+numberArray[i-1] !== +numberArray[numberArray.length - i]) return false
-    }
-    return true
+  for (let i = 1; i <= numberArray.length; i++) {
+    if (+numberArray[i-1] !== +numberArray[numberArray.length - i]) return false
+  }
+  return true
 }
 
 while (!isPalindrome(result) && factor1 > 100) {
