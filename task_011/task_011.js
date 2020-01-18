@@ -27,33 +27,32 @@ const adjacentProductUp = (startingPoint) => {
 
 const adjacentProductDown = (startingPoint) => {
     const { x, y } = startingPoint
-    let productUp = grid[y][x]
+    let productDown = grid[y][x]
     for (let i = 1; i < 4 && grid[y+i] && grid[y+i][x]; i++) {
-        productUp *= grid[y+i][x]
+        productDown *= grid[y+i][x]
     }
-    return productUp
+    return productDown
 }
 
 const adjacentProductDiagonallyDown = (startingPoint) => {
     const { x, y } = startingPoint
-    let productUp = grid[y][x]
+    let productDiagonallyDown = grid[y][x]
     for (let i = 1; i < 4 && grid[y+i] && grid[y+i][x+i]; i++) {
-        productUp *= grid[y+i][x]
+        productDiagonallyDown *= grid[y+i][x]
     }
-    return productUp
+    return productDiagonallyDown
 }
 
 const adjacentProductDiagonallyUp = (startingPoint) => {
     const { x, y } = startingPoint
-    let productUp = grid[y][x]
+    let productDiagonallyUp = grid[y][x]
     for (let i = 1; i < 4 && grid[y-i] && grid[y-i][x+i]; i++) {
-        productUp *= grid[y-i][x+i]
+        productDiagonallyUp *= grid[y-i][x+i]
     }
-    return productUp
+    return productDiagonallyUp
 }
 
-// iterate rows
-// let maxAdjacentProduct = 0
+let maxAdjacentProduct = 0
 for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[i].length; j++) {
         let startingPoint = {
@@ -66,12 +65,12 @@ for (let i = 0; i < grid.length; i++) {
         const productDiagonallyDown = adjacentProductDiagonallyDown(startingPoint)
         const productDiagonallyUp = adjacentProductDiagonallyUp(startingPoint)
 
-        // maxAdjacentProduct 
-
-        console.log('product for element [', i, ',', j, '] 4 to the right:', productToTheRight)
-        console.log('product for element [', i, ',', j, '] 4 up:', productUp)
-        console.log('product for element [', i, ',', j, '] 4 down:', productDown)
-        console.log('product for element [', i, ',', j, '] 4 diagonally up:', productDiagonallyUp)
-        console.log('product for element [', i, ',', j, '] 4 diagonally down:', productDiagonallyDown)
+        if (productToTheRight > maxAdjacentProduct) maxAdjacentProduct = productToTheRight
+        if (productUp > maxAdjacentProduct) maxAdjacentProduct = productUp
+        if (productDown > maxAdjacentProduct) maxAdjacentProduct = productDown
+        if (productDiagonallyDown > maxAdjacentProduct) maxAdjacentProduct = productDiagonallyDown
+        if (productDiagonallyUp > maxAdjacentProduct) maxAdjacentProduct = productDiagonallyUp
     }
 }
+
+console.log('max product:', maxAdjacentProduct)
