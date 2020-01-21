@@ -61,4 +61,3 @@ const getNumberOfDivisors = (triangleNumber) => {
 }
 
 const triangleNumber = getFirstTriangleNumberWith500Divisors()
-// solution: index = 12375 ==> triangleNumber = 76576500
