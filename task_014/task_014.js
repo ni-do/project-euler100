@@ -16,6 +16,7 @@ const nIsOdd = n => 3 * n + 1
 let n = 1
 let chain = []
 while (n < 100000) {
-    if(n % 2 === 0) chain.push(nIsEven(n))
-    else n = chain.push(nIsOdd(n))
+    if(n % 2 === 0) n = nIsEven(n)
+    else n = nIsOdd(n)
+    chain.push(n)
 }
