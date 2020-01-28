@@ -13,12 +13,32 @@
 const nIsEven = n => n/2
 const nIsOdd = n => 3 * n + 1
 
+let offset = 1
 let n = 1
-let chain = []
-while (n < 100000) {
-    if(n % 2 === 0) n = nIsEven(n)
-    else n = nIsOdd(n)
-    chain.push(n)
+const OffsetWithMaxChainLength = {
+    offset: 0,
+    chainLength: 0,
 }
 
-console.log('n:', n)
+while(offset < 1000000) {
+    let chain = []
+    n = offset
+    chain.push(n)
+    while (n > 1) {
+        if(n % 2 === 0) n = nIsEven(n)
+        else n = nIsOdd(n)
+        chain.push(n)
+    }
+    if (n !== 1) chain.push(1)
+
+    if(chain.length > OffsetWithMaxChainLength.chainLength) {
+        OffsetWithMaxChainLength.offset = offset
+        OffsetWithMaxChainLength.chainLength = chain.length
+    }
+
+    // console.log('length of chain for offset', offset, ':', chain.length)
+    offset++
+}
+
+console.log('offset with max chain length:', OffsetWithMaxChainLength.offset)
+console.log('max chain length:', OffsetWithMaxChainLength.chainLength)
