@@ -8,3 +8,14 @@
 // it is thought that all starting numbers finish at 1.
 // Which starting number, under one million, produces the longest chain?
 // NOTE: Once the chain starts the terms are allowed to go above one million.
+
+
+const nIsEven = n => n/2
+const nIsOdd = n => 3 * n + 1
+
+let n = 1
+let chain = []
+while (n < 100000) {
+    if(n % 2 === 0) chain.push(nIsEven(n))
+    else n = chain.push(nIsOdd(n))
+}
