@@ -20,3 +20,5 @@ while (n < 100000) {
     else n = nIsOdd(n)
     chain.push(n)
 }
+
+console.log('n:', n)
