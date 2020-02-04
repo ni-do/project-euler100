@@ -8,13 +8,21 @@ const createGrid = (x, y) => {
     return Array(y).fill(Array(x).fill("x"))
 }
 
-const moveRight = (grid) => {
-
+const currentPosition = {
+    x,
+    y,
 }
 
-const moveDown = (grid) => {
-    
+const moveRight = (currentPosition) => {
+    currentPosition.y += 1
+}
+
+const moveDown = (currentPosition) => {
+    currentPosition.x += 1
 }
 
 const grid = createGrid(20,20)
 
+while (currentPosition.x !== 20 && currentPosition.y !== 20) {
+    // target the bottom right corner
+}
