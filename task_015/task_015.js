@@ -3,26 +3,14 @@
 // there are exactly 6 routes to the bottom right corner.
 // How many such routes are there through a 20×20 grid?
 
-
-const createGrid = (x, y) => {
-    return Array(y).fill(Array(x).fill("x"))
+const getNumofPathsForGridSize = (gridSize) => {
+    let paths = 1
+    for (let i = 0; i < gridSize; i++) {
+        paths *= (2 * gridSize) - i;
+        paths /= i + 1;
+    }
+    return paths
 }
 
-const currentPosition = {
-    x,
-    y,
-}
-
-const moveRight = (currentPosition) => {
-    currentPosition.y += 1
-}
-
-const moveDown = (currentPosition) => {
-    currentPosition.x += 1
-}
-
-const grid = createGrid(20,20)
-
-while (currentPosition.x !== 20 && currentPosition.y !== 20) {
-    // target the bottom right corner
-}
+console.log('paths for grid size 2x2:', getNumofPathsForGridSize(2))
+console.log('paths for grid size 20x20:', getNumofPathsForGridSize(20))
